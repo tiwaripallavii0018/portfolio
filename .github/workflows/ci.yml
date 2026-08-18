@@ -46,7 +46,4 @@ jobs:
         working-directory: backend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          .\mvnw.cmd org.sonarsource.scanner.maven:sonar-maven-plugin:sonar `
-            -Dsonar.token=$env:SONAR_TOKEN `
-            -Dsonar.host.url=http://localhost:9000
+        run: .\mvnw.cmd org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar "-Dsonar.token=$env:SONAR_TOKEN" "-Dsonar.host.url=http://localhost:9000"
