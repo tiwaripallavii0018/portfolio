@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -19,8 +16,9 @@ jobs:
       - name: Check Java
         run: java -version
 
-      - name: Check Maven
-        run: mvn -version
+      - name: Check Maven Wrapper
+        working-directory: backend
+        run: .\mvnw.cmd -version
 
       - name: Build Backend
         working-directory: backend
