@@ -1,9 +1,9 @@
-FROM eclipse-temurin:26-jdk
+FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-COPY .mvn .mvn
 COPY mvnw .
+COPY .mvn .mvn
 COPY pom.xml .
 
 RUN chmod +x mvnw
