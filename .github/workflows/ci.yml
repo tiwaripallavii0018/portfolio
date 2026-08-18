@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: self-hosted
@@ -16,10 +20,18 @@ jobs:
       - name: Check Java
         run: java -version
 
+      - name: Check Backend Folder
+        run: |
+          Get-Location
+          Get-ChildItem
+          Get-ChildItem .\backend
+
       - name: Check Maven Wrapper
-        working-directory: backend
-        run: .\mvnw.cmd -version
+        run: |
+          cd backend
+          .\mvnw.cmd -version
 
       - name: Build Backend
-        working-directory: backend
-        run: .\mvnw.cmd clean package -DskipTests
+        run: |
+          cd backend
+          .\mvnw.cmd clean package -DskipTests
