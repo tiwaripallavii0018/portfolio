@@ -1,0 +1,27 @@
+name: Portfolio CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Java
+        run: java -version
+
+      - name: Check Maven
+        run: mvn -version
+
+      - name: Build Backend
+        working-directory: backend
+        run: .\mvnw.cmd clean package -DskipTests
