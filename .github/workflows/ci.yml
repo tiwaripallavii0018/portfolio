@@ -42,4 +42,5 @@ jobs:
       - name: Build Frontend Docker Image
         run: docker build -t portfolio-frontend:ci -f Dockerfile.frontend .
 
-      
+      - name: Deploy with Docker Compose
+        run: docker compose up -d --build
