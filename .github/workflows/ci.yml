@@ -42,8 +42,4 @@ jobs:
       - name: Build Frontend Docker Image
         run: docker build -t portfolio-frontend:ci -f Dockerfile.frontend .
 
-      - name: SonarQube Analysis
-        working-directory: backend
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: .\mvnw.cmd org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar "-Dsonar.token=$env:SONAR_TOKEN" "-Dsonar.host.url=http://localhost:9000"
+      
